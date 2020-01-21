@@ -1,0 +1,33 @@
+{
+    "name": "Faculties",
+    "fields": [
+        {
+            "fieldName": "nameFaculty",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "groups",
+            "otherEntityRelationshipName": "faculty",
+            "relationshipName": "groups"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "teachers",
+            "otherEntityRelationshipName": "faculties",
+            "relationshipName": "teachers"
+        }
+    ],
+    "changelogDate": "20200121130633",
+    "entityTableName": "faculties",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

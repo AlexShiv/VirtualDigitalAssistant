@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="forms">
+            <h2><span jhiTranslate="virtualDigitalAssistantApp.forms.detail.title">Forms</span> {{forms.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.forms.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{forms.createDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.forms.event">Event</span></dt>
+                <dd>
+                    <div *ngIf="forms.event">
+                        <a [routerLink]="['/events', forms.event?.id, 'view']">{{forms.event?.nameEvent}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.forms.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="forms.client">
+                        <a [routerLink]="['/clients', forms.client?.id, 'view']">{{forms.client?.phone}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/forms', forms.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

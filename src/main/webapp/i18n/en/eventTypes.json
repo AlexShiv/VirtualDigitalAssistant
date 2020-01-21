@@ -1,0 +1,23 @@
+{
+  "virtualDigitalAssistantApp": {
+    "eventTypes": {
+      "home": {
+        "title": "Event Types",
+        "createLabel": "Create a new Event Types",
+        "createOrEditLabel": "Create or edit a Event Types",
+        "notFound": "No Event Types found"
+      },
+      "created": "A new Event Types is created with identifier {{ param }}",
+      "updated": "A Event Types is updated with identifier {{ param }}",
+      "deleted": "A Event Types is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Event Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Event Types"
+      },
+      "nameEventType": "Name Event Type",
+      "events": "Events"
+    }
+  }
+}

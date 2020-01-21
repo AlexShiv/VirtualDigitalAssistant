@@ -1,0 +1,34 @@
+{
+    "name": "Groups",
+    "fields": [
+        {
+            "fieldName": "nameGroup",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "clients",
+            "otherEntityRelationshipName": "groups",
+            "relationshipName": "clients"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "faculties",
+            "otherEntityRelationshipName": "groups",
+            "relationshipName": "faculty",
+            "otherEntityField": "nameFaculty"
+        }
+    ],
+    "changelogDate": "20200121130632",
+    "entityTableName": "groups",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

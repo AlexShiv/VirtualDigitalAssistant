@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="virtualDigitalAssistantApp.events.home.title">Events</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-events" [routerLink]="['/events/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="virtualDigitalAssistantApp.events.home.createLabel">
+            Create a new Events
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="events?.length === 0">
+        <span jhiTranslate="virtualDigitalAssistantApp.events.home.notFound">No events found</span>
+    </div>
+    <div class="table-responsive" *ngIf="events?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.nameEvent">Name Event</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.description">Description</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.beginDate">Begin Date</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.endDate">End Date</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.client">Client</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.eventTypes">Event Types</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let events of events ;trackBy: trackId">
+                <td><a [routerLink]="['/events', events.id, 'view' ]">{{events.id}}</a></td>
+                <td>{{events.nameEvent}}</td>
+                <td>{{events.description}}</td>
+                <td>{{events.beginDate | date:'medium'}}</td>
+                <td>{{events.endDate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="events.client">
+                        <a [routerLink]="['/clients', events.client?.id, 'view' ]" >{{events.client?.phone}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="events.eventTypes">
+                        <a [routerLink]="['/event-types', events.eventTypes?.id, 'view' ]" >{{events.eventTypes?.nameEventType}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/events', events.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/events', events.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(events)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

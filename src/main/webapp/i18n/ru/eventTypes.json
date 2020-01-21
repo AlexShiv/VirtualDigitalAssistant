@@ -1,0 +1,23 @@
+{
+  "virtualDigitalAssistantApp": {
+    "eventTypes": {
+      "home": {
+        "title": "Event Types",
+        "createLabel": "Создать новый Event Types",
+        "createOrEditLabel": "Создать или отредактировать Event Types",
+        "notFound": "No Event Types found"
+      },
+      "created": "Новый Event Types создан с идентификатором {{ param }}",
+      "updated": "Event Types обновлен с идентификатором {{ param }}",
+      "deleted": "Event Types удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Event Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Event Types"
+      },
+      "nameEventType": "Name Event Type",
+      "events": "Events"
+    }
+  }
+}

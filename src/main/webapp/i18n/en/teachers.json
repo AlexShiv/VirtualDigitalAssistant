@@ -1,0 +1,26 @@
+{
+  "virtualDigitalAssistantApp": {
+    "teachers": {
+      "home": {
+        "title": "Teachers",
+        "createLabel": "Create a new Teachers",
+        "createOrEditLabel": "Create or edit a Teachers",
+        "notFound": "No Teachers found"
+      },
+      "created": "A new Teachers is created with identifier {{ param }}",
+      "updated": "A Teachers is updated with identifier {{ param }}",
+      "deleted": "A Teachers is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Teachers {{ id }}?"
+      },
+      "detail": {
+        "title": "Teachers"
+      },
+      "surname": "Surname",
+      "name": "Name",
+      "patronymic": "Patronymic",
+      "isDecan": "Is Decan",
+      "faculties": "Faculties"
+    }
+  }
+}

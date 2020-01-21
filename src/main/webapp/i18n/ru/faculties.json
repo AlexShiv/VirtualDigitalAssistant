@@ -1,0 +1,24 @@
+{
+  "virtualDigitalAssistantApp": {
+    "faculties": {
+      "home": {
+        "title": "Faculties",
+        "createLabel": "Создать новый Faculties",
+        "createOrEditLabel": "Создать или отредактировать Faculties",
+        "notFound": "No Faculties found"
+      },
+      "created": "Новый Faculties создан с идентификатором {{ param }}",
+      "updated": "Faculties обновлен с идентификатором {{ param }}",
+      "deleted": "Faculties удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Faculties {{ id }}?"
+      },
+      "detail": {
+        "title": "Faculties"
+      },
+      "nameFaculty": "Name Faculty",
+      "groups": "Groups",
+      "teachers": "Teachers"
+    }
+  }
+}
