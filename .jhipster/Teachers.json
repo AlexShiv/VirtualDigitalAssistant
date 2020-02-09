@@ -1,0 +1,40 @@
+{
+    "name": "Teachers",
+    "fields": [
+        {
+            "fieldName": "surname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "patronymic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDecan",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "faculties",
+            "otherEntityRelationshipName": "teachers",
+            "relationshipName": "faculties",
+            "otherEntityField": "nameFaculty"
+        }
+    ],
+    "changelogDate": "20200121130629",
+    "entityTableName": "teachers",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

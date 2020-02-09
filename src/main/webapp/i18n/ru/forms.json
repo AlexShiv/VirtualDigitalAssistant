@@ -1,0 +1,24 @@
+{
+  "virtualDigitalAssistantApp": {
+    "forms": {
+      "home": {
+        "title": "Forms",
+        "createLabel": "Создать новый Forms",
+        "createOrEditLabel": "Создать или отредактировать Forms",
+        "notFound": "No Forms found"
+      },
+      "created": "Новый Forms создан с идентификатором {{ param }}",
+      "updated": "Forms обновлен с идентификатором {{ param }}",
+      "deleted": "Forms удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Forms {{ id }}?"
+      },
+      "detail": {
+        "title": "Forms"
+      },
+      "createDate": "Create Date",
+      "event": "Event",
+      "client": "Client"
+    }
+  }
+}

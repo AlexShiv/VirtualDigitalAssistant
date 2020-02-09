@@ -1,0 +1,28 @@
+{
+  "virtualDigitalAssistantApp": {
+    "events": {
+      "home": {
+        "title": "Events",
+        "createLabel": "Create a new Events",
+        "createOrEditLabel": "Create or edit a Events",
+        "notFound": "No Events found"
+      },
+      "created": "A new Events is created with identifier {{ param }}",
+      "updated": "A Events is updated with identifier {{ param }}",
+      "deleted": "A Events is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Events {{ id }}?"
+      },
+      "detail": {
+        "title": "Events"
+      },
+      "nameEvent": "Name Event",
+      "description": "Description",
+      "beginDate": "Begin Date",
+      "endDate": "End Date",
+      "client": "Client",
+      "forms": "Forms",
+      "eventTypes": "Event Types"
+    }
+  }
+}

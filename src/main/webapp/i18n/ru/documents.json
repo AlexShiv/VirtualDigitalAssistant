@@ -1,0 +1,25 @@
+{
+  "virtualDigitalAssistantApp": {
+    "documents": {
+      "home": {
+        "title": "Documents",
+        "createLabel": "Создать новый Documents",
+        "createOrEditLabel": "Создать или отредактировать Documents",
+        "notFound": "No Documents found"
+      },
+      "created": "Новый Documents создан с идентификатором {{ param }}",
+      "updated": "Documents обновлен с идентификатором {{ param }}",
+      "deleted": "Documents удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Documents {{ id }}?"
+      },
+      "detail": {
+        "title": "Documents"
+      },
+      "nameDocument": "Name Document",
+      "content": "Content",
+      "createDate": "Create Date",
+      "changeDate": "Change Date"
+    }
+  }
+}

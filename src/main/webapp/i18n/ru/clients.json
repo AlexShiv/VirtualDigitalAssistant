@@ -1,0 +1,28 @@
+{
+  "virtualDigitalAssistantApp": {
+    "clients": {
+      "home": {
+        "title": "Clients",
+        "createLabel": "Создать новый Clients",
+        "createOrEditLabel": "Создать или отредактировать Clients",
+        "notFound": "No Clients found"
+      },
+      "created": "Новый Clients создан с идентификатором {{ param }}",
+      "updated": "Clients обновлен с идентификатором {{ param }}",
+      "deleted": "Clients удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Clients {{ id }}?"
+      },
+      "detail": {
+        "title": "Clients"
+      },
+      "surname": "Surname",
+      "name": "Name",
+      "patronymic": "Patronymic",
+      "phone": "Phone",
+      "forms": "Forms",
+      "groups": "Groups",
+      "role": "Role"
+    }
+  }
+}

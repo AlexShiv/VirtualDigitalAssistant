@@ -1,0 +1,53 @@
+{
+    "name": "Clients",
+    "fields": [
+        {
+            "fieldName": "surname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "patronymic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "forms",
+            "otherEntityRelationshipName": "client",
+            "relationshipName": "forms"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "groups",
+            "otherEntityRelationshipName": "clients",
+            "relationshipName": "groups",
+            "otherEntityField": "nameGroup"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "roles",
+            "otherEntityRelationshipName": "clients",
+            "relationshipName": "role",
+            "otherEntityField": "nameRole"
+        }
+    ],
+    "changelogDate": "20200121130630",
+    "entityTableName": "clients",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

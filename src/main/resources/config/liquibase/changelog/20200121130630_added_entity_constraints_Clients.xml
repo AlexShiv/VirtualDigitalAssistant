@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Clients.
+    -->
+    <changeSet id="20200121130630-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="groups_id"
+                                 baseTableName="clients"
+                                 constraintName="fk_clients_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="groups"/>
+
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="clients"
+                                 constraintName="fk_clients_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+
+    </changeSet>
+</databaseChangeLog>

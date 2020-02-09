@@ -1,0 +1,24 @@
+{
+  "virtualDigitalAssistantApp": {
+    "groups": {
+      "home": {
+        "title": "Groups",
+        "createLabel": "Создать новый Groups",
+        "createOrEditLabel": "Создать или отредактировать Groups",
+        "notFound": "No Groups found"
+      },
+      "created": "Новый Groups создан с идентификатором {{ param }}",
+      "updated": "Groups обновлен с идентификатором {{ param }}",
+      "deleted": "Groups удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Groups {{ id }}?"
+      },
+      "detail": {
+        "title": "Groups"
+      },
+      "nameGroup": "Name Group",
+      "clients": "Clients",
+      "faculty": "Faculty"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+entity Teachers {
+	surname String,
+	name String,
+	patronymic String,
+    isDecan Boolean
+}
+
+entity Clients{
+	surname String,
+	name String,
+	patronymic String,
+    phone String
+}
+
+entity Roles{
+	nameRole String,
+}
+
+entity Groups{
+	nameGroup String
+}
+
+entity Faculties{
+	nameFaculty String
+}
+
+entity Events{
+	nameEvent String,
+    description String,
+	beginDate Instant,
+	endDate Instant
+}
+
+entity Forms{
+	// дата подачи заявки
+	createDate Instant
+}
+
+entity Documents{
+	nameDocument String,
+	content String,
+	createDate Instant,
+	changeDate Instant
+}
+
+entity EventTypes{
+	nameEventType String
+}
+
+
+
+relationship OneToMany {
+	Faculties to Groups{faculty(nameFaculty)}
+    Groups to Clients{groups(nameGroup)}
+    Roles to Clients{role(nameRole)}
+    Events to Forms{event(nameEvent)}
+    Clients to Forms{client(phone)}
+    Faculties to Teachers{faculties(nameFaculty)}
+    EventTypes to Events{eventTypes(nameEventType)}
+}
+
+relationship OneToOne {
+	// руководитель социализации
+    Events{client(phone)} to Clients
+}

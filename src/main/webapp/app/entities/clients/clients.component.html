@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="virtualDigitalAssistantApp.clients.home.title">Clients</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-clients" [routerLink]="['/clients/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="virtualDigitalAssistantApp.clients.home.createLabel">
+            Create a new Clients
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="clients?.length === 0">
+        <span jhiTranslate="virtualDigitalAssistantApp.clients.home.notFound">No clients found</span>
+    </div>
+    <div class="table-responsive" *ngIf="clients?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.surname">Surname</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.patronymic">Patronymic</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.phone">Phone</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.groups">Groups</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.clients.role">Role</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let clients of clients ;trackBy: trackId">
+                <td><a [routerLink]="['/clients', clients.id, 'view' ]">{{clients.id}}</a></td>
+                <td>{{clients.surname}}</td>
+                <td>{{clients.name}}</td>
+                <td>{{clients.patronymic}}</td>
+                <td>{{clients.phone}}</td>
+                <td>
+                    <div *ngIf="clients.groups">
+                        <a [routerLink]="['/groups', clients.groups?.id, 'view' ]" >{{clients.groups?.nameGroup}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="clients.role">
+                        <a [routerLink]="['/roles', clients.role?.id, 'view' ]" >{{clients.role?.nameRole}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/clients', clients.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/clients', clients.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(clients)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

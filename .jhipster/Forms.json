@@ -1,0 +1,35 @@
+{
+    "name": "Forms",
+    "fields": [
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "events",
+            "otherEntityRelationshipName": "forms",
+            "relationshipName": "event",
+            "otherEntityField": "nameEvent"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "clients",
+            "otherEntityRelationshipName": "forms",
+            "relationshipName": "client",
+            "otherEntityField": "phone"
+        }
+    ],
+    "changelogDate": "20200121130635",
+    "entityTableName": "forms",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

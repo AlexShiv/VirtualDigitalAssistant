@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documents">
+            <h2><span jhiTranslate="virtualDigitalAssistantApp.documents.detail.title">Documents</span> {{documents.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.documents.nameDocument">Name Document</span></dt>
+                <dd>
+                    <span>{{documents.nameDocument}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.documents.content">Content</span></dt>
+                <dd>
+                    <span>{{documents.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.documents.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{documents.createDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.documents.changeDate">Change Date</span></dt>
+                <dd>
+                    <span>{{documents.changeDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/documents', documents.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+{
+    "name": "Events",
+    "fields": [
+        {
+            "fieldName": "nameEvent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "beginDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "clients",
+            "otherEntityRelationshipName": "events",
+            "relationshipName": "client",
+            "otherEntityField": "phone",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "forms",
+            "otherEntityRelationshipName": "event",
+            "relationshipName": "forms"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "eventTypes",
+            "otherEntityRelationshipName": "events",
+            "relationshipName": "eventTypes",
+            "otherEntityField": "nameEventType"
+        }
+    ],
+    "changelogDate": "20200121130634",
+    "entityTableName": "events",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

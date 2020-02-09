@@ -1,0 +1,27 @@
+{
+    "name": "Roles",
+    "fields": [
+        {
+            "fieldName": "nameRole",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "clients",
+            "otherEntityRelationshipName": "role",
+            "relationshipName": "clients"
+        }
+    ],
+    "changelogDate": "20200121130631",
+    "entityTableName": "roles",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
