@@ -17,7 +17,7 @@ public class BotController {
     // TODO: 15.03.2020 Добавить параметр из конфига isTest, для активации заглушки
     @PostMapping("/")
     public ResponseEntity<Dialog> ask(@RequestBody Dialog message) {
-        if (message.getAnswer() == null || message.getAnswer().isEmpty()) {
+        if (message.getMessage() == null || message.getMessage().isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 

@@ -1,22 +1,21 @@
 package ru.asu.vda.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Dialog {
 
-    @JsonProperty(value = "message")
-    private String answer;
+    private String message;
 
-    public Dialog(String answer) {
-        this.answer = answer;
+    public Dialog() {
     }
 
-    public String getAnswer() {
-        return answer;
+    public Dialog(String message) {
+        this.message = message;
     }
 
-    public Dialog setAnswer(String answer) {
-        this.answer = answer;
-        return this;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

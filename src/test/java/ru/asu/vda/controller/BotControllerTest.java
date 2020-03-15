@@ -22,8 +22,8 @@ public class BotControllerTest {
         ResponseEntity<Dialog> responseEntity = botController.ask(new Dialog("Hi"));
         assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isNotNull();
-        assertThat(responseEntity.getBody().getAnswer()).isNotEmpty();
-        assertThat(responseEntity.getBody().getAnswer()).isIn("Да свершится предначертанное", "Лок тар огар", "Опять работать?", "Нужно больше золота", "Склоняюсь перед вашей волей");
+        assertThat(responseEntity.getBody().getMessage()).isNotEmpty();
+        assertThat(responseEntity.getBody().getMessage()).isIn("Да свершится предначертанное", "Лок тар огар", "Опять работать?", "Нужно больше золота", "Склоняюсь перед вашей волей");
 
     }
 
