@@ -14,8 +14,7 @@ import java.util.List;
 @RequestMapping("/api/bot")
 public class BotController {
 
-    // TODO: 15.03.2020 Добавить параметр из конфига isTest, для активации заглушки
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Dialog> ask(@RequestBody Dialog message) {
         if (message.getMessage() == null || message.getMessage().isEmpty()) {
             return ResponseEntity.badRequest().build();
