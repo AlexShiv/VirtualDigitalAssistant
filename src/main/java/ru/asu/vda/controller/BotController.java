@@ -7,22 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.asu.vda.service.dto.Dialog;
 
-import java.util.Arrays;
-import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/bot")
 public class BotController {
 
     @PostMapping("")
-    public ResponseEntity<Dialog> ask(@RequestBody Dialog message) {
-        if (message.getMessage() == null || message.getMessage().isEmpty()) {
+    public ResponseEntity<Dialog> ask(@Valid @RequestBody Dialog message) {
+/*        if (message.getMessage() == null || message.getMessage().isEmpty()) {
             return ResponseEntity.badRequest().build();
-        }
+        }*/
 
-        List<String> answers = Arrays.asList("Да свершится предначертанное", "Лок тар огар", "Опять работать?", "Нужно больше золота", "Склоняюсь перед вашей волей");
-
-        Dialog dialog = new Dialog(answers.get((int) (Math.random() * answers.size())));
+        Dialog dialog = new Dialog(message.getMessage());
         return ResponseEntity.ok(dialog);
     }
 }
