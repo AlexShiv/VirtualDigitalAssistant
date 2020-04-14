@@ -23,16 +23,6 @@ public class BotControllerTest {
         assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isNotNull();
         assertThat(responseEntity.getBody().getMessage()).isNotEmpty();
-        assertThat(responseEntity.getBody().getMessage()).isIn("Да свершится предначертанное", "Лок тар огар", "Опять работать?", "Нужно больше золота", "Склоняюсь перед вашей волей");
-
-    }
-
-    @Test
-    public void emptyQuestionBotTest() {
-        ResponseEntity<Dialog> responseEntity = botController.ask(new Dialog(""));
-        assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.BAD_REQUEST);
-
-        ResponseEntity<Dialog> responseEntity1 = botController.ask(new Dialog(null));
-        assertThat(responseEntity1.getStatusCode()).isEqualByComparingTo(HttpStatus.BAD_REQUEST);
+        assertThat(responseEntity.getBody().getMessage()).isEqualTo("Hi");
     }
 }
