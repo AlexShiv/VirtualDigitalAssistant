@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.asu.vda.service.dto.Dialog;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.lang.Math.random;
 
 @RestController
 @RequestMapping("/api/bot")
@@ -15,11 +19,18 @@ public class BotController {
 
     @PostMapping("")
     public ResponseEntity<Dialog> ask(@Valid @RequestBody Dialog message) {
-/*        if (message.getMessage() == null || message.getMessage().isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }*/
-
-        Dialog dialog = new Dialog(message.getMessage());
+        Dialog dialog;
+        switch (message.getMessage().toLowerCase()){
+            case "привет":
+                dialog = new Dialog("привет, мой друг");
+                break;
+            case "как дела":
+                dialog = new Dialog("все класс, как у тебя?");
+                break;
+            default:
+                List<String> answers = Arrays.asList("Да свершится предначертанное", "Лок тар огар", "Опять работать?", "Нужно больше золота", "Склоняюсь перед вашей волей");
+                dialog = new Dialog(answers.get((int) (random() * answers.size())));
+        }
         return ResponseEntity.ok(dialog);
     }
 }

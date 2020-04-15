@@ -19,10 +19,10 @@ public class BotControllerTest {
 
     @Test
     public void stubBotTest() {
-        ResponseEntity<Dialog> responseEntity = botController.ask(new Dialog("Hi"));
+        ResponseEntity<Dialog> responseEntity = botController.ask(new Dialog("привет"));
         assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isNotNull();
         assertThat(responseEntity.getBody().getMessage()).isNotEmpty();
-        assertThat(responseEntity.getBody().getMessage()).isEqualTo("Hi");
+        assertThat(responseEntity.getBody().getMessage()).isEqualTo("привет, мой друг");
     }
 }
