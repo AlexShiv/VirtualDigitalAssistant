@@ -40,6 +40,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 1111
+    #    url: jdbc:postgresql://localhost:5432/vda
+    #    username: vda_user
+    #    password: vda1111!
     hikari:
       poolName: Hikari
       auto-commit: false
