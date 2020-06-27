@@ -5,22 +5,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.asu.vda.service.BotService;
 import ru.asu.vda.service.dto.Dialog;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.lang.Math.random;
 
 @RestController
 @RequestMapping("/api/bot")
 public class BotController {
+    private final BotService botService;
+
+    public BotController(BotService botService) {
+        this.botService = botService;
+    }
 
     @PostMapping("")
     public ResponseEntity<Dialog> ask(@Valid @RequestBody Dialog message) {
-        Dialog dialog = new Dialog("");
-        String mes = message.getMessage().toLowerCase();
+//        Dialog dialog = getStubDialog(message.getMessage().toLowerCase());
+        Dialog netAnswer = botService.askBot(message.getMessage().toLowerCase());
+        return ResponseEntity.ok(netAnswer);
+    }
+
+    private Dialog getStubDialog(String mes) {
+        Dialog dialog;
         if (mes.contains("прив") || mes.contains("здравс")) {
             dialog = new Dialog("привет, мой друг");
         } else if (mes.contains("как дела")) {
@@ -36,6 +43,6 @@ public class BotController {
         } else {
             dialog = new Dialog("пожалуйста, переформулируйте вопрос");
         }
-        return ResponseEntity.ok(dialog);
+        return dialog;
     }
 }

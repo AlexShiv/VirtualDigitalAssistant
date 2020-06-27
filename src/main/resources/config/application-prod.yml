@@ -140,3 +140,6 @@ jhipster:
 # ===================================================================
 
 # application:
+neuralnet:
+  modelPath: 'opt/vda/models/VdaNeuralNet.bin'
+  vectorizerPath: 'opt/vda/models/model.bin'
