@@ -30,8 +30,8 @@ export class EventsUpdatePage {
   descriptionInput = element(by.id('field_description'));
   beginDateInput = element(by.id('field_beginDate'));
   endDateInput = element(by.id('field_endDate'));
-  clientSelect = element(by.id('field_client'));
   eventTypesSelect = element(by.id('field_eventTypes'));
+  clientSelect = element(by.id('field_client'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -69,25 +69,6 @@ export class EventsUpdatePage {
     return await this.endDateInput.getAttribute('value');
   }
 
-  async clientSelectLastOption(): Promise<void> {
-    await this.clientSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async clientSelectOption(option: string): Promise<void> {
-    await this.clientSelect.sendKeys(option);
-  }
-
-  getClientSelect(): ElementFinder {
-    return this.clientSelect;
-  }
-
-  async getClientSelectedOption(): Promise<string> {
-    return await this.clientSelect.element(by.css('option:checked')).getText();
-  }
-
   async eventTypesSelectLastOption(): Promise<void> {
     await this.eventTypesSelect
       .all(by.tagName('option'))
@@ -105,6 +86,25 @@ export class EventsUpdatePage {
 
   async getEventTypesSelectedOption(): Promise<string> {
     return await this.eventTypesSelect.element(by.css('option:checked')).getText();
+  }
+
+  async clientSelectLastOption(): Promise<void> {
+    await this.clientSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async clientSelectOption(option: string): Promise<void> {
+    await this.clientSelect.sendKeys(option);
+  }
+
+  getClientSelect(): ElementFinder {
+    return this.clientSelect;
+  }
+
+  async getClientSelectedOption(): Promise<string> {
+    return await this.clientSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

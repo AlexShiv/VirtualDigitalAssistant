@@ -26,6 +26,12 @@
             "relationshipName": "forms"
         },
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "events",
+            "otherEntityRelationshipName": "client",
+            "relationshipName": "events"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "groups",
             "otherEntityRelationshipName": "clients",

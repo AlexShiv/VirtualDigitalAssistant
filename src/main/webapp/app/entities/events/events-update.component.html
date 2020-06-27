@@ -33,17 +33,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="virtualDigitalAssistantApp.events.client" for="field_client">Client</label>
-                    <select class="form-control" id="field_client" name="client" formControlName="client">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="clientsOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientsOption" *ngFor="let clientsOption of clients; trackBy: trackById">{{clientsOption.phone}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="virtualDigitalAssistantApp.events.eventTypes" for="field_eventTypes">Event Types</label>
                     <select class="form-control" id="field_eventTypes" name="eventTypes" formControlName="eventTypes">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="eventTypesOption.id === editForm.get('eventTypes')!.value?.id ? editForm.get('eventTypes')!.value : eventTypesOption" *ngFor="let eventTypesOption of eventtypes; trackBy: trackById">{{eventTypesOption.nameEventType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="virtualDigitalAssistantApp.events.client" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" formControlName="client">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientsOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientsOption" *ngFor="let clientsOption of clients; trackBy: trackById">{{clientsOption.phone}}</option>
                     </select>
                 </div>
             </div>

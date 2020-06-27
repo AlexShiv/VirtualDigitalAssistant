@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
-import { IClients } from 'app/shared/model/clients.model';
 import { IForms } from 'app/shared/model/forms.model';
 import { IEventTypes } from 'app/shared/model/event-types.model';
+import { IClients } from 'app/shared/model/clients.model';
 
 export interface IEvents {
   id?: number;
@@ -9,9 +9,9 @@ export interface IEvents {
   description?: string;
   beginDate?: Moment;
   endDate?: Moment;
-  client?: IClients;
   forms?: IForms[];
   eventTypes?: IEventTypes;
+  client?: IClients;
 }
 
 export class Events implements IEvents {
@@ -21,8 +21,8 @@ export class Events implements IEvents {
     public description?: string,
     public beginDate?: Moment,
     public endDate?: Moment,
-    public client?: IClients,
     public forms?: IForms[],
-    public eventTypes?: IEventTypes
+    public eventTypes?: IEventTypes,
+    public client?: IClients
   ) {}
 }

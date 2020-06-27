@@ -21,16 +21,16 @@
                 <dd>
                     <span>{{events.endDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="virtualDigitalAssistantApp.events.client">Client</span></dt>
-                <dd>
-                    <div *ngIf="events.client">
-                        <a [routerLink]="['/clients', events.client?.id, 'view']">{{events.client?.phone}}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="virtualDigitalAssistantApp.events.eventTypes">Event Types</span></dt>
                 <dd>
                     <div *ngIf="events.eventTypes">
                         <a [routerLink]="['/event-types', events.eventTypes?.id, 'view']">{{events.eventTypes?.nameEventType}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.events.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="events.client">
+                        <a [routerLink]="['/clients', events.client?.id, 'view']">{{events.client?.phone}}</a>
                     </div>
                 </dd>
             </dl>

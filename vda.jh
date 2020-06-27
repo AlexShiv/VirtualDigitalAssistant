@@ -57,9 +57,5 @@ relationship OneToMany {
     Clients to Forms{client(phone)}
     Faculties to Teachers{faculties(nameFaculty)}
     EventTypes to Events{eventTypes(nameEventType)}
-}
-
-relationship OneToOne {
-	// руководитель социализации
-    Events{client(phone)} to Clients
+    Clients to Events{client(phone)}
 }

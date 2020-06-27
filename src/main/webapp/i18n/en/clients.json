@@ -21,6 +21,7 @@
       "patronymic": "Patronymic",
       "phone": "Phone",
       "forms": "Forms",
+      "events": "Events",
       "groups": "Groups",
       "role": "Role"
     }
