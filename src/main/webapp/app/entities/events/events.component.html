@@ -23,8 +23,8 @@
             <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.description">Description</span></th>
             <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.beginDate">Begin Date</span></th>
             <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.endDate">End Date</span></th>
-            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.client">Client</span></th>
             <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.eventTypes">Event Types</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.events.client">Client</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -36,13 +36,13 @@
                 <td>{{events.beginDate | date:'medium'}}</td>
                 <td>{{events.endDate | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="events.client">
-                        <a [routerLink]="['/clients', events.client?.id, 'view' ]" >{{events.client?.phone}}</a>
+                    <div *ngIf="events.eventTypes">
+                        <a [routerLink]="['/event-types', events.eventTypes?.id, 'view' ]" >{{events.eventTypes?.nameEventType}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="events.eventTypes">
-                        <a [routerLink]="['/event-types', events.eventTypes?.id, 'view' ]" >{{events.eventTypes?.nameEventType}}</a>
+                    <div *ngIf="events.client">
+                        <a [routerLink]="['/clients', events.client?.id, 'view' ]" >{{events.client?.phone}}</a>
                     </div>
                 </td>
                 <td class="text-right">

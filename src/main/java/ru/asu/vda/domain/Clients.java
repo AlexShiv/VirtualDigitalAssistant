@@ -36,6 +36,9 @@ public class Clients implements Serializable {
     @OneToMany(mappedBy = "client")
     private Set<Forms> forms = new HashSet<>();
 
+    @OneToMany(mappedBy = "client")
+    private Set<Events> events = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties("clients")
     private Groups groups;
@@ -128,6 +131,31 @@ public class Clients implements Serializable {
 
     public void setForms(Set<Forms> forms) {
         this.forms = forms;
+    }
+
+    public Set<Events> getEvents() {
+        return events;
+    }
+
+    public Clients events(Set<Events> events) {
+        this.events = events;
+        return this;
+    }
+
+    public Clients addEvents(Events events) {
+        this.events.add(events);
+        events.setClient(this);
+        return this;
+    }
+
+    public Clients removeEvents(Events events) {
+        this.events.remove(events);
+        events.setClient(null);
+        return this;
+    }
+
+    public void setEvents(Set<Events> events) {
+        this.events = events;
     }
 
     public Groups getGroups() {

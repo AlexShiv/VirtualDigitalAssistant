@@ -27,10 +27,10 @@
             <column name="end_date" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="client_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_events_client_id" />
-            </column>
             <column name="event_types_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="client_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

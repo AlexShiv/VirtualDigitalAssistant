@@ -20,14 +20,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "clients",
-            "otherEntityRelationshipName": "events",
-            "relationshipName": "client",
-            "otherEntityField": "phone",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "one-to-many",
             "otherEntityName": "forms",
             "otherEntityRelationshipName": "event",
@@ -39,6 +31,13 @@
             "otherEntityRelationshipName": "events",
             "relationshipName": "eventTypes",
             "otherEntityField": "nameEventType"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "clients",
+            "otherEntityRelationshipName": "events",
+            "relationshipName": "client",
+            "otherEntityField": "phone"
         }
     ],
     "changelogDate": "20200121130634",

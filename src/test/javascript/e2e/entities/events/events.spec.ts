@@ -43,8 +43,8 @@ describe('Events e2e test', () => {
       eventsUpdatePage.setDescriptionInput('description'),
       eventsUpdatePage.setBeginDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       eventsUpdatePage.setEndDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      eventsUpdatePage.clientSelectLastOption(),
-      eventsUpdatePage.eventTypesSelectLastOption()
+      eventsUpdatePage.eventTypesSelectLastOption(),
+      eventsUpdatePage.clientSelectLastOption()
     ]);
     expect(await eventsUpdatePage.getNameEventInput()).to.eq('nameEvent', 'Expected NameEvent value to be equals to nameEvent');
     expect(await eventsUpdatePage.getDescriptionInput()).to.eq('description', 'Expected Description value to be equals to description');

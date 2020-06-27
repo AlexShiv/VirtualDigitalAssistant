@@ -34,16 +34,16 @@ public class Events implements Serializable {
     @Column(name = "end_date")
     private Instant endDate;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Clients client;
-
     @OneToMany(mappedBy = "event")
     private Set<Forms> forms = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("events")
     private EventTypes eventTypes;
+
+    @ManyToOne
+    @JsonIgnoreProperties("events")
+    private Clients client;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -106,19 +106,6 @@ public class Events implements Serializable {
         this.endDate = endDate;
     }
 
-    public Clients getClient() {
-        return client;
-    }
-
-    public Events client(Clients clients) {
-        this.client = clients;
-        return this;
-    }
-
-    public void setClient(Clients clients) {
-        this.client = clients;
-    }
-
     public Set<Forms> getForms() {
         return forms;
     }
@@ -155,6 +142,19 @@ public class Events implements Serializable {
 
     public void setEventTypes(EventTypes eventTypes) {
         this.eventTypes = eventTypes;
+    }
+
+    public Clients getClient() {
+        return client;
+    }
+
+    public Events client(Clients clients) {
+        this.client = clients;
+        return this;
+    }
+
+    public void setClient(Clients clients) {
+        this.client = clients;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -10,12 +10,12 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IEvents, Events } from 'app/shared/model/events.model';
 import { EventsService } from './events.service';
-import { IClients } from 'app/shared/model/clients.model';
-import { ClientsService } from 'app/entities/clients/clients.service';
 import { IEventTypes } from 'app/shared/model/event-types.model';
 import { EventTypesService } from 'app/entities/event-types/event-types.service';
+import { IClients } from 'app/shared/model/clients.model';
+import { ClientsService } from 'app/entities/clients/clients.service';
 
-type SelectableEntity = IClients | IEventTypes;
+type SelectableEntity = IEventTypes | IClients;
 
 @Component({
   selector: 'jhi-events-update',
@@ -24,9 +24,9 @@ type SelectableEntity = IClients | IEventTypes;
 export class EventsUpdateComponent implements OnInit {
   isSaving = false;
 
-  clients: IClients[] = [];
-
   eventtypes: IEventTypes[] = [];
+
+  clients: IClients[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -34,14 +34,14 @@ export class EventsUpdateComponent implements OnInit {
     description: [],
     beginDate: [],
     endDate: [],
-    client: [],
-    eventTypes: []
+    eventTypes: [],
+    client: []
   });
 
   constructor(
     protected eventsService: EventsService,
-    protected clientsService: ClientsService,
     protected eventTypesService: EventTypesService,
+    protected clientsService: ClientsService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -49,30 +49,6 @@ export class EventsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ events }) => {
       this.updateForm(events);
-
-      this.clientsService
-        .query({ filter: 'events-is-null' })
-        .pipe(
-          map((res: HttpResponse<IClients[]>) => {
-            return res.body ? res.body : [];
-          })
-        )
-        .subscribe((resBody: IClients[]) => {
-          if (!events.client || !events.client.id) {
-            this.clients = resBody;
-          } else {
-            this.clientsService
-              .find(events.client.id)
-              .pipe(
-                map((subRes: HttpResponse<IClients>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IClients[]) => {
-                this.clients = concatRes;
-              });
-          }
-        });
 
       this.eventTypesService
         .query()
@@ -82,6 +58,15 @@ export class EventsUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IEventTypes[]) => (this.eventtypes = resBody));
+
+      this.clientsService
+        .query()
+        .pipe(
+          map((res: HttpResponse<IClients[]>) => {
+            return res.body ? res.body : [];
+          })
+        )
+        .subscribe((resBody: IClients[]) => (this.clients = resBody));
     });
   }
 
@@ -92,8 +77,8 @@ export class EventsUpdateComponent implements OnInit {
       description: events.description,
       beginDate: events.beginDate != null ? events.beginDate.format(DATE_TIME_FORMAT) : null,
       endDate: events.endDate != null ? events.endDate.format(DATE_TIME_FORMAT) : null,
-      client: events.client,
-      eventTypes: events.eventTypes
+      eventTypes: events.eventTypes,
+      client: events.client
     });
   }
 
@@ -120,8 +105,8 @@ export class EventsUpdateComponent implements OnInit {
       beginDate:
         this.editForm.get(['beginDate'])!.value != null ? moment(this.editForm.get(['beginDate'])!.value, DATE_TIME_FORMAT) : undefined,
       endDate: this.editForm.get(['endDate'])!.value != null ? moment(this.editForm.get(['endDate'])!.value, DATE_TIME_FORMAT) : undefined,
-      client: this.editForm.get(['client'])!.value,
-      eventTypes: this.editForm.get(['eventTypes'])!.value
+      eventTypes: this.editForm.get(['eventTypes'])!.value,
+      client: this.editForm.get(['client'])!.value
     };
   }
 

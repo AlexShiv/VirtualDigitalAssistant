@@ -20,9 +20,9 @@
       "description": "Description",
       "beginDate": "Begin Date",
       "endDate": "End Date",
-      "client": "Client",
       "forms": "Forms",
-      "eventTypes": "Event Types"
+      "eventTypes": "Event Types",
+      "client": "Client"
     }
   }
 }
