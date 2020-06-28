@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="statCorrectAnswers">
+            <h2><span jhiTranslate="virtualDigitalAssistantApp.statCorrectAnswers.detail.title">Stat Correct Answers</span> {{statCorrectAnswers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.statCorrectAnswers.nameCriteria">Name Criteria</span></dt>
+                <dd>
+                    <span>{{statCorrectAnswers.nameCriteria}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.statCorrectAnswers.countResult">Count Result</span></dt>
+                <dd>
+                    <span>{{statCorrectAnswers.countResult}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/stat-correct-answers', statCorrectAnswers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

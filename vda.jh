@@ -47,6 +47,16 @@ entity EventTypes{
 	nameEventType String
 }
 
+entity StatPopularCategories{
+	nameCategory String,
+    countAnswers Long
+}
+
+entity StatCorrectAnswers{
+	nameCriteria String,
+    countResult Long
+}
+
 
 
 relationship OneToMany {

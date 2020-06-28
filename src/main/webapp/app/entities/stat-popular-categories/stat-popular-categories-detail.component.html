@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="statPopularCategories">
+            <h2><span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.detail.title">Stat Popular Categories</span> {{statPopularCategories.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.nameCategory">Name Category</span></dt>
+                <dd>
+                    <span>{{statPopularCategories.nameCategory}}</span>
+                </dd>
+                <dt><span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.countAnswers">Count Answers</span></dt>
+                <dd>
+                    <span>{{statPopularCategories.countAnswers}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/stat-popular-categories', statPopularCategories.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
