@@ -2,6 +2,8 @@ package ru.asu.vda.web.rest;
 
 import ru.asu.vda.VirtualDigitalAssistantApp;
 import ru.asu.vda.domain.Forms;
+import ru.asu.vda.repository.ClientsRepository;
+import ru.asu.vda.repository.EventsRepository;
 import ru.asu.vda.repository.FormsRepository;
 import ru.asu.vda.web.rest.errors.ExceptionTranslator;
 
@@ -40,6 +42,10 @@ public class FormsResourceIT {
 
     @Autowired
     private FormsRepository formsRepository;
+    @Autowired
+    private ClientsRepository clientsRepository;
+    @Autowired
+    private EventsRepository eventsRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -63,7 +69,7 @@ public class FormsResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FormsResource formsResource = new FormsResource(formsRepository);
+        final FormsResource formsResource = new FormsResource(formsRepository, clientsRepository, eventsRepository);
         this.restFormsMockMvc = MockMvcBuilders.standaloneSetup(formsResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -151,7 +157,7 @@ public class FormsResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(forms.getId().intValue())))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getForms() throws Exception {
