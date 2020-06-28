@@ -1,6 +1,7 @@
 package ru.asu.vda.web.rest;
 
 import ru.asu.vda.domain.Faculties;
+import ru.asu.vda.domain.Groups;
 import ru.asu.vda.repository.FacultiesRepository;
 import ru.asu.vda.web.rest.errors.BadRequestAlertException;
 
@@ -10,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -18,6 +19,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link ru.asu.vda.domain.Faculties}.
@@ -102,6 +104,10 @@ public class FacultiesResource {
     public ResponseEntity<Faculties> getFaculties(@PathVariable Long id) {
         log.debug("REST request to get Faculties : {}", id);
         Optional<Faculties> faculties = facultiesRepository.findById(id);
+        if (faculties.isPresent()) {
+            Set<Groups> events = faculties.get().getGroups();
+            log.debug(String.valueOf(events.size()));
+        }
         return ResponseUtil.wrapOrNotFound(faculties);
     }
 
