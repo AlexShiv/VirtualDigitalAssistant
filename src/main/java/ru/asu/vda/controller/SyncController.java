@@ -2,7 +2,6 @@ package ru.asu.vda.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -41,7 +40,8 @@ public class SyncController {
         String syncDtoFaculties = restTemplate.postForObject("http://m.raspisanie.asu.edu.ru/student/faculty", null, String.class);
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            List<SyncDto> facultiesList = objectMapper.readValue(syncDtoFaculties, new TypeReference<List<SyncDto>>(){});
+            List<SyncDto> facultiesList = objectMapper.readValue(syncDtoFaculties, new TypeReference<List<SyncDto>>() {
+            });
             facultiesList.forEach(syncDto -> {
                 Faculties faculties = new Faculties();
                 faculties.setNameFaculty(syncDto.name);
@@ -51,11 +51,12 @@ public class SyncController {
                 try {
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                    MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+                    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
                     map.add("id_spec", syncDto.id);
                     HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
                     String syncDtoGroups = restTemplate.postForObject("http://m.raspisanie.asu.edu.ru/student/specialty", request, String.class);
-                    List<SyncDto> groupsList = objectMapper.readValue(syncDtoGroups, new TypeReference<List<SyncDto>>(){});
+                    List<SyncDto> groupsList = objectMapper.readValue(syncDtoGroups, new TypeReference<List<SyncDto>>() {
+                    });
                     groupsList.forEach(gr -> {
                         Groups group = new Groups().faculty(faculties).nameGroup(gr.name);
                         if (groupsRepository.existsByNameGroup(gr.name)) {
