@@ -39,6 +39,16 @@ import { RouterModule } from '@angular/router';
       {
         path: 'event-types',
         loadChildren: () => import('./event-types/event-types.module').then(m => m.VirtualDigitalAssistantEventTypesModule)
+      },
+      {
+        path: 'stat-popular-categories',
+        loadChildren: () =>
+          import('./stat-popular-categories/stat-popular-categories.module').then(m => m.VirtualDigitalAssistantStatPopularCategoriesModule)
+      },
+      {
+        path: 'stat-correct-answers',
+        loadChildren: () =>
+          import('./stat-correct-answers/stat-correct-answers.module').then(m => m.VirtualDigitalAssistantStatCorrectAnswersModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -16,6 +16,8 @@
         "forms": "Forms",
         "documents": "Documents",
         "eventTypes": "Event Types",
+        "statPopularCategories": "Stat Popular Categories",
+        "statCorrectAnswers": "Stat Correct Answers",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

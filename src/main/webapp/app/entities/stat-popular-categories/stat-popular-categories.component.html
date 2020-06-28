@@ -1,0 +1,57 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.home.title">Stat Popular Categories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-stat-popular-categories" [routerLink]="['/stat-popular-categories/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.home.createLabel">
+            Create a new Stat Popular Categories
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="statPopularCategories?.length === 0">
+        <span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.home.notFound">No statPopularCategories found</span>
+    </div>
+    <div class="table-responsive" *ngIf="statPopularCategories?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.nameCategory">Name Category</span></th>
+            <th scope="col" ><span jhiTranslate="virtualDigitalAssistantApp.statPopularCategories.countAnswers">Count Answers</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let statPopularCategories of statPopularCategories ;trackBy: trackId">
+                <td><a [routerLink]="['/stat-popular-categories', statPopularCategories.id, 'view' ]">{{statPopularCategories.id}}</a></td>
+                <td>{{statPopularCategories.nameCategory}}</td>
+                <td>{{statPopularCategories.countAnswers}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/stat-popular-categories', statPopularCategories.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/stat-popular-categories', statPopularCategories.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(statPopularCategories)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

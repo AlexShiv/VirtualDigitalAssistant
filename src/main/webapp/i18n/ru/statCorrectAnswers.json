@@ -1,0 +1,23 @@
+{
+  "virtualDigitalAssistantApp": {
+    "statCorrectAnswers": {
+      "home": {
+        "title": "Stat Correct Answers",
+        "createLabel": "Создать новый Stat Correct Answers",
+        "createOrEditLabel": "Создать или отредактировать Stat Correct Answers",
+        "notFound": "No Stat Correct Answers found"
+      },
+      "created": "Новый Stat Correct Answers создан с идентификатором {{ param }}",
+      "updated": "Stat Correct Answers обновлен с идентификатором {{ param }}",
+      "deleted": "Stat Correct Answers удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Stat Correct Answers {{ id }}?"
+      },
+      "detail": {
+        "title": "Stat Correct Answers"
+      },
+      "nameCriteria": "Name Criteria",
+      "countResult": "Count Result"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "StatCorrectAnswers",
+    "fields": [
+        {
+            "fieldName": "nameCriteria",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "countResult",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200628200112",
+    "entityTableName": "stat_correct_answers",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

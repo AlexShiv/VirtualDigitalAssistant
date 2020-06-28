@@ -1,0 +1,23 @@
+{
+  "virtualDigitalAssistantApp": {
+    "statPopularCategories": {
+      "home": {
+        "title": "Stat Popular Categories",
+        "createLabel": "Create a new Stat Popular Categories",
+        "createOrEditLabel": "Create or edit a Stat Popular Categories",
+        "notFound": "No Stat Popular Categories found"
+      },
+      "created": "A new Stat Popular Categories is created with identifier {{ param }}",
+      "updated": "A Stat Popular Categories is updated with identifier {{ param }}",
+      "deleted": "A Stat Popular Categories is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Stat Popular Categories {{ id }}?"
+      },
+      "detail": {
+        "title": "Stat Popular Categories"
+      },
+      "nameCategory": "Name Category",
+      "countAnswers": "Count Answers"
+    }
+  }
+}
