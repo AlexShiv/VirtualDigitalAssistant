@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientsRepository extends JpaRepository<Clients, Long> {
 
+    Boolean existsClientsByPhone(String phone);
+
 }
