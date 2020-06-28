@@ -1,23 +1,25 @@
 package ru.asu.vda.web.rest;
 
-import ru.asu.vda.domain.Events;
-import ru.asu.vda.repository.EventsRepository;
-import ru.asu.vda.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import ru.asu.vda.domain.Clients;
+import ru.asu.vda.domain.Events;
+import ru.asu.vda.domain.Forms;
+import ru.asu.vda.repository.EventsRepository;
+import ru.asu.vda.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link ru.asu.vda.domain.Events}.
@@ -83,7 +85,6 @@ public class EventsResource {
     /**
      * {@code GET  /events} : get all the events.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of events in body.
      */
     @GetMapping("/events")
@@ -116,5 +117,28 @@ public class EventsResource {
         log.debug("REST request to delete Events : {}", id);
         eventsRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * {@code GET  /events/:id/clients} : get clients which write on this event.
+     *
+     * @param id the id of the events to find clients.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @GetMapping("/events/{id}/clients")
+    public List<Clients> getClientsOnEvent(@PathVariable Long id) {
+        log.debug("REST request to delete Events : {}", id);
+        Optional<Events> events = eventsRepository.findById(id);
+        List<Clients> result;
+        if (events.isPresent()) {
+            Optional<List<Clients>> clients = events
+                .map(v -> v.getForms().stream()
+                    .map(Forms::getClient)
+                    .collect(Collectors.toList()));
+            result = clients.orElseGet(ArrayList::new);
+        } else {
+            throw new BadRequestAlertException("Event not found", ENTITY_NAME, "eventNotFound");
+        }
+        return result;
     }
 }
