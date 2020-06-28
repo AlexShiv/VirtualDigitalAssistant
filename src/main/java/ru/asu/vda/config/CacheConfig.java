@@ -3,6 +3,7 @@ package ru.asu.vda.config;
 import org.nd4j.linalg.cpu.nativecpu.NDArray;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import javax.cache.CacheManager;
 import javax.cache.Caching;
@@ -25,5 +26,10 @@ public class CacheConfig {
             .setStatisticsEnabled(true);
         cacheManager.createCache("unknownWords", configuration);
         return cacheManager;
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
     }
 }
