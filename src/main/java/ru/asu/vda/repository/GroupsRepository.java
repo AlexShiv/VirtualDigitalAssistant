@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GroupsRepository extends JpaRepository<Groups, Long> {
 
+    Boolean existsByNameGroup(String nameGroup);
+
 }

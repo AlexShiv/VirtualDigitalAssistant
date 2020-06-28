@@ -1,21 +1,21 @@
 package ru.asu.vda.web.rest;
 
-import ru.asu.vda.domain.Forms;
-import ru.asu.vda.repository.FormsRepository;
-import ru.asu.vda.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import ru.asu.vda.domain.Forms;
+import ru.asu.vda.repository.ClientsRepository;
+import ru.asu.vda.repository.EventsRepository;
+import ru.asu.vda.repository.FormsRepository;
+import ru.asu.vda.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -35,9 +35,13 @@ public class FormsResource {
     private String applicationName;
 
     private final FormsRepository formsRepository;
+    private final ClientsRepository clientsRepository;
+    private final EventsRepository eventsRepository;
 
-    public FormsResource(FormsRepository formsRepository) {
+    public FormsResource(FormsRepository formsRepository, ClientsRepository clientsRepository, EventsRepository eventsRepository) {
         this.formsRepository = formsRepository;
+        this.clientsRepository = clientsRepository;
+        this.eventsRepository = eventsRepository;
     }
 
     /**
@@ -52,6 +56,14 @@ public class FormsResource {
         log.debug("REST request to save Forms : {}", forms);
         if (forms.getId() != null) {
             throw new BadRequestAlertException("A new forms cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (!clientsRepository.existsClientsByPhone(forms.getClient().getPhone())) {
+            forms.setClient(clientsRepository.save(forms.getClient()));
+        }
+        if (!eventsRepository.existsEventsByNameEvent(forms.getEvent().getNameEvent())) {
+            throw new BadRequestAlertException("Could not find event with name:" + forms.getEvent().getNameEvent(), ENTITY_NAME, "idexists");
+        } else {
+            forms.setEvent(eventsRepository.getByNameEvent(forms.getEvent().getNameEvent()));
         }
         Forms result = formsRepository.save(forms);
         return ResponseEntity.created(new URI("/api/forms/" + result.getId()))
@@ -83,7 +95,6 @@ public class FormsResource {
     /**
      * {@code GET  /forms} : get all the forms.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of forms in body.
      */
     @GetMapping("/forms")

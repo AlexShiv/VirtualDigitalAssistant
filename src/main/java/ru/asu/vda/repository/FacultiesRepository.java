@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FacultiesRepository extends JpaRepository<Faculties, Long> {
 
+    Boolean existsByNameFaculty(String nameFaculty);
+
 }
