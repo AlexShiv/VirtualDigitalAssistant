@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import ru.asu.vda.domain.Clients;
 import ru.asu.vda.domain.Forms;
+import ru.asu.vda.domain.Roles;
 import ru.asu.vda.repository.ClientsRepository;
 import ru.asu.vda.repository.EventsRepository;
 import ru.asu.vda.repository.FormsRepository;
+import ru.asu.vda.repository.RolesRepository;
 import ru.asu.vda.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
@@ -37,11 +40,13 @@ public class FormsResource {
     private final FormsRepository formsRepository;
     private final ClientsRepository clientsRepository;
     private final EventsRepository eventsRepository;
+    private final RolesRepository rolesRepository;
 
-    public FormsResource(FormsRepository formsRepository, ClientsRepository clientsRepository, EventsRepository eventsRepository) {
+    public FormsResource(FormsRepository formsRepository, ClientsRepository clientsRepository, EventsRepository eventsRepository, RolesRepository rolesRepository) {
         this.formsRepository = formsRepository;
         this.clientsRepository = clientsRepository;
         this.eventsRepository = eventsRepository;
+        this.rolesRepository = rolesRepository;
     }
 
     /**
@@ -57,9 +62,17 @@ public class FormsResource {
         if (forms.getId() != null) {
             throw new BadRequestAlertException("A new forms cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        if (!clientsRepository.existsClientsByPhone(forms.getClient().getPhone())) {
+        Optional<Clients> clients = clientsRepository.findByPhone(forms.getClient().getPhone());
+        if (!clients.isPresent()) {
             forms.setClient(clientsRepository.save(forms.getClient()));
+        } else {
+            forms.setClient(clients.get());
         }
+        Optional<Roles> userRole = rolesRepository.findByNameRole("user");
+        if (!userRole.isPresent()) {
+            throw new BadRequestAlertException("Role user not found", ENTITY_NAME, "idexists");
+        }
+        forms.getClient().setRole(userRole.get());
         if (!eventsRepository.existsEventsByNameEvent(forms.getEvent().getNameEvent())) {
             throw new BadRequestAlertException("Could not find event with name:" + forms.getEvent().getNameEvent(), ENTITY_NAME, "idexists");
         } else {
