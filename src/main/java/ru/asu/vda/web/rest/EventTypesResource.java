@@ -1,10 +1,5 @@
 package ru.asu.vda.web.rest;
 
-import ru.asu.vda.domain.EventTypes;
-import ru.asu.vda.domain.Events;
-import ru.asu.vda.repository.EventTypesRepository;
-import ru.asu.vda.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -13,10 +8,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import ru.asu.vda.domain.EventTypes;
+import ru.asu.vda.domain.Events;
+import ru.asu.vda.repository.EventTypesRepository;
+import ru.asu.vda.web.rest.errors.BadRequestAlertException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -85,7 +83,6 @@ public class EventTypesResource {
     /**
      * {@code GET  /event-types} : get all the eventTypes.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of eventTypes in body.
      */
     @GetMapping("/event-types")
