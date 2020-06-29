@@ -1,0 +1,24 @@
+{
+    "name": "StatPopularCategories",
+    "fields": [
+        {
+            "fieldName": "nameCategory",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "countAnswers",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200628200111",
+    "entityTableName": "stat_popular_categories",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

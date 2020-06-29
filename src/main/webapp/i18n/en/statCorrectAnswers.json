@@ -1,0 +1,23 @@
+{
+  "virtualDigitalAssistantApp": {
+    "statCorrectAnswers": {
+      "home": {
+        "title": "Stat Correct Answers",
+        "createLabel": "Create a new Stat Correct Answers",
+        "createOrEditLabel": "Create or edit a Stat Correct Answers",
+        "notFound": "No Stat Correct Answers found"
+      },
+      "created": "A new Stat Correct Answers is created with identifier {{ param }}",
+      "updated": "A Stat Correct Answers is updated with identifier {{ param }}",
+      "deleted": "A Stat Correct Answers is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Stat Correct Answers {{ id }}?"
+      },
+      "detail": {
+        "title": "Stat Correct Answers"
+      },
+      "nameCriteria": "Name Criteria",
+      "countResult": "Count Result"
+    }
+  }
+}
