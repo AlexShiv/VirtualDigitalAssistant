@@ -141,5 +141,5 @@ jhipster:
 
 # application:
 neuralnet:
-  modelPath: 'opt/vda/models/VdaNeuralNet.bin'
-  vectorizerPath: 'opt/vda/models/model.bin'
+  modelPath: '/opt/vda/models/VdaNeuralNet.bin'
+  vectorizerPath: '/opt/vda/models/WikiModel.bin'
