@@ -1,10 +1,5 @@
 package ru.asu.vda.config;
 
-import ru.asu.vda.security.*;
-import ru.asu.vda.security.jwt.*;
-
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -20,6 +15,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.web.filter.CorsFilter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
+import ru.asu.vda.security.AuthoritiesConstants;
+import ru.asu.vda.security.jwt.JWTConfigurer;
+import ru.asu.vda.security.jwt.TokenProvider;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -86,6 +84,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/bot").permitAll()
             .antMatchers(HttpMethod.GET,"/api/event-types").permitAll()
             .antMatchers(HttpMethod.GET,"/api/event-types/{id}").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/event-types/{id}/actual").permitAll()
             .antMatchers(HttpMethod.GET,"/api/events").permitAll()
             .antMatchers(HttpMethod.GET,"/api/events/{id}").permitAll()
             .antMatchers(HttpMethod.GET,"/api/faculties").permitAll()

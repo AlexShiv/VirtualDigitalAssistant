@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link ru.asu.vda.domain.EventTypes}.
@@ -122,5 +125,25 @@ public class EventTypesResource {
         log.debug("REST request to delete EventTypes : {}", id);
         eventTypesRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * {@code GET  /event-types/:id} : eventTypes with actual task.
+     *
+     * @param id the id of the eventTypes to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the eventTypes, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/event-types/{id}/actual")
+    public ResponseEntity<EventTypes> getActualEventTypes(@PathVariable Long id) {
+        log.debug("REST request to get EventTypes : {}", id);
+        Optional<EventTypes> eventTypes = eventTypesRepository.findById(id);
+        if (eventTypes.isPresent()) {
+            eventTypes.get().setEvents(eventTypes.get().getEvents().stream()
+                .filter(events -> events.getBeginDate()
+                    .minus(1L, ChronoUnit.DAYS)
+                    .isAfter(Instant.now()))
+                .collect(Collectors.toSet()));
+        }
+        return ResponseUtil.wrapOrNotFound(eventTypes);
     }
 }
