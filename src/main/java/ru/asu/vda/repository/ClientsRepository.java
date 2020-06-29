@@ -4,6 +4,8 @@ import ru.asu.vda.domain.Clients;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 /**
  * Spring Data  repository for the Clients entity.
@@ -12,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientsRepository extends JpaRepository<Clients, Long> {
 
-    Boolean existsClientsByPhone(String phone);
+    Optional<Clients> findByPhone(String phone);
 
 }

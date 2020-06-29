@@ -69,7 +69,7 @@ public class FormsResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FormsResource formsResource = new FormsResource(formsRepository, clientsRepository, eventsRepository);
+        final FormsResource formsResource = new FormsResource(formsRepository, clientsRepository, eventsRepository, rolesRepository);
         this.restFormsMockMvc = MockMvcBuilders.standaloneSetup(formsResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
