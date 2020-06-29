@@ -5,6 +5,7 @@ import ru.asu.vda.domain.Forms;
 import ru.asu.vda.repository.ClientsRepository;
 import ru.asu.vda.repository.EventsRepository;
 import ru.asu.vda.repository.FormsRepository;
+import ru.asu.vda.repository.RolesRepository;
 import ru.asu.vda.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -46,6 +47,8 @@ public class FormsResourceIT {
     private ClientsRepository clientsRepository;
     @Autowired
     private EventsRepository eventsRepository;
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
