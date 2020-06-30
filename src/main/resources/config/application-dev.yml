@@ -120,4 +120,4 @@ jhipster:
 # application:
 neuralnet:
   modelPath: 'D:/DataSets/models/VdaNeuralNet.bin'
-  vectorizerPath: 'D:/DataSets/182/model.bin'
+  vectorizerPath: 'C:/Users/shiya/Desktop/Projects/BigData/UniversityBot/WikiModel.bin'

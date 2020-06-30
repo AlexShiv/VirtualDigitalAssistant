@@ -21,9 +21,16 @@ public class BotController {
 
     @PostMapping("")
     public ResponseEntity<Dialog> ask(@Valid @RequestBody Dialog message) {
-//        Dialog dialog = getStubDialog(message.getMessage().toLowerCase());
-        Dialog netAnswer = botService.askBot(message.getMessage().toLowerCase());
-        return ResponseEntity.ok(netAnswer);
+        Dialog dialog = null;
+        try {
+            dialog = getStubDialog(message.getMessage().toLowerCase());
+            if (dialog == null) {
+                dialog = botService.askBot(message.getMessage().toLowerCase());
+            }
+        } catch (Exception e) {
+            dialog = new Dialog("пожалуйста, переформулируйте вопрос");
+        }
+        return ResponseEntity.ok(dialog);
     }
 
     private Dialog getStubDialog(String mes) {
@@ -41,7 +48,7 @@ public class BotController {
         } else if (mes.contains("контакт")) {
             dialog = new Dialog("Контактная информация: ЮРИДИЧЕСКИЙ АДРЕС: 414056, Россия, г. Астрахань, ул. Татищева, 20а, Астраханский государственный университет. Телефоны: 8 (8512) 24-64-00. Факс: 8 (8512) 24-68-64. E-mail: asu@asu.edu.ru. Приёмная комиссия: Телефоны: 8 (8512) 24-64-07, 8 (8512) 24-64-08, 8 (8512) 24-64-09. E-mail: metodika@asu.edu.ru. Более подробно –> http://asu.edu.ru/universitet/5-kontaktnaia-informaciia.html");
         } else {
-            dialog = new Dialog("пожалуйста, переформулируйте вопрос");
+            dialog = null;
         }
         return dialog;
     }
